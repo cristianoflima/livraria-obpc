@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"/>
+<link th:href="@{css/style.css}" rel="stylesheet"/>
+<title>Livraria OBPC - Login</title>
+</head>
+<body>
+	<h1>Faça seu Login</h1>
+	<div th:if="${param.logout}">
+		<h5>Logout realizado com sucesso, até logo!</h5>
+	</div>
+	
+	<div class="formLogin">
+		<form action="/logar" method="POST">
+			<label>Email</label>
+			<div>
+				<input type="text" name="username" placeholder="Digite seu email" />		
+			</div>
+			<br/>
+			<label>Senha</label>
+			<div>
+				<input type="password" name="password" placeholder="Senha" />		
+			</div>
+			<br/>
+			<div>
+				<button type="submit">Entrar</button>
+				<a href="/cadastrarUsuario">Cadastrar</a>
+			</div>
+			
+			<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+		
+		</form>
+	</div>	
+</body>
+</html>

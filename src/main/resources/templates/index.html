@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<meta charset="UTF-8"/>
+<title>Index - HTML</title>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+</head>
+<body>
+	<h1>Livraria OBPC</h1>
+	
+	<ul>
+		<li sec:authorize="hasRole('1')"><a href="/cadastrarUsuario">Confirmar Retirada</a></li>
+		<form action="/logout" method="POST">
+			<button type="submit">Sair</button>
+			<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+		</form>
+	</ul>
+	
+	
+</body>
+</html>
