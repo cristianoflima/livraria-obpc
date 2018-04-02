@@ -23,7 +23,9 @@ public class JdbcSecurityConfig {
 			.inMemoryAuthentication()
 			.withUser("fabio").password("123").roles("1")
 			.and()
-			.withUser("cristiano").password("123").roles("2");
+			.withUser("cristiano").password("123").roles("2")
+			.and()
+			.withUser("cleber").password("123").roles("1");
 	}
 
 }
