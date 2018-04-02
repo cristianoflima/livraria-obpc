@@ -15,7 +15,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http
 			.authorizeRequests()
 				.antMatchers("/cadastrarUsuario").permitAll()
-				.antMatchers("/").hasAnyRole("RL_ADM")
+//				.antMatchers("/").hasAnyRole("RL_ADM")
 				.anyRequest()
 				.authenticated()
 			.and()
