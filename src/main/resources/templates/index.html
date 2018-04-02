@@ -13,7 +13,7 @@
 	<h1>Livraria OBPC</h1>
 	
 	<ul>
-		<li sec:authorize="hasRole('1')"><a href="/cadastrarUsuario">Confirmar Retirada</a></li>
+		<li sec:authorize="hasAuthority('RL_ADM')"><a href="/cadastrarUsuario">Confirmar Retirada</a></li>
 		<form action="/logout" method="POST">
 			<button type="submit">Sair</button>
 			<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
