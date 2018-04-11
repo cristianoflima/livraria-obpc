@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+.center-form{
+	margin: 0 auto;
+	width: 75%;
+}
+
+
+label {
+	font-weight: 700;
+}
+
+.blocosCadastrais{
+	margin-bottom: 5%;
+}
+
+.tituloPrincipal{
+	text-align: center !important;
+	background: #023c88;
+	width: 100%;
+	height: 70px;
+	padding-top: 1%;
+	margin-bottom: 5%;
+	display: flex;
+}
+
+.tituloPrincipal h1{
+	color: #fff;
+	font-family: sans-serif;
+	margin: 0 auto;
+}
+
+.tituloPrincipal img{
+	align-items: left;
+	margin-left: 10px;
+}
