@@ -1,48 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8"/>
-<link th:href="@{css/login.css}" rel="stylesheet"/>
-<link th:href="@{css/bootstrap-reboot.min.css}" rel="stylesheet"/>
-<link th:href="@{css/bootstrap-grid.min.css}" rel="stylesheet"/>
-<link th:href="@{css/bootstrap.min.css}" rel="stylesheet"/>
+<meta charset="UTF-8" />
+<link th:href="@{css/login.css}" rel="stylesheet" />
+<link th:href="@{css/bootstrap-reboot.min.css}" rel="stylesheet" />
+<link th:href="@{css/bootstrap-grid.min.css}" rel="stylesheet" />
+<link th:href="@{css/bootstrap.min.css}" rel="stylesheet" />
 
 <title>Livraria OBPC</title>
 </head>
 <body class="text-center capa">
-<!-- 	<div th:if="${param.logout}"> -->
-<!-- 		<h5>Logout realizado com sucesso, até logo!</h5> -->
-<!-- 	</div> -->
-<!-- 	<div th:if="${param.error}"> -->
-<!-- 		<h5>Usuario não encontrado</h5> -->
-<!-- 	</div> -->
-<!-- 	<div th:if="${param.cadastroSucesso}"> -->
-<!-- 		<h5>Cadastro realizado com sucesso.</h5> -->
-<!-- 	</div> -->
 
-		<form action="/logar" method="POST" class="form-signin">
-			
-<!-- 			<h1 class="h3 mb-3 font-weight-normal">Faça seu Login</h1> -->
-			
-			<img th:src="@{css/img/logo.png}" class="imgLogo"/>
-			
-			<label class="sr-only">Email</label>
-			<input type="text" name="username" placeholder="Digite seu email" class="form-control"/>		
-			
-			<label class="sr-only">Senha</label>
-			<input type="password" name="password" placeholder="Senha" class="form-control"/>		
-			
-			<button type="submit" class="btn btn-lg btn-primary btn-block">Entrar</button>
-			<a href="/cadastrarUsuario">Cadastrar</a>
+	<!-- 	<div th:if="${param.cadastroSucesso}"> -->
+	<!-- 		<h5>Cadastro realizado com sucesso.</h5> -->
+	<!-- 	</div> -->
 
-			<p class="mt-5 mb-3 text-muted">© 2017-2018</p>
-			
-			<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
-		
-		</form>
-		
-<script  th:src="@{js/jquery-3.3.1.min.js}" type="text/javascript"></script>
-<script  th:src="@{js/bootstrap.min.js}" type="text/javascript"></script>
-<script  th:src="@{js/bootstrap.bundle.min.js}" type="text/javascript"></script>
+	<form action="/logar" method="POST" class="form-signin">
+
+		<!-- 			<h1 class="h3 mb-3 font-weight-normal">Faça seu Login</h1> -->
+
+		<img th:src="@{images/logo.png}" class="imgLogo" />
+
+		<div th:if="${param.logout}">
+			<h5 class="messageSuccess" >Logout realizado com sucesso, até logo!</h5>
+		</div>
+		<div th:if="${param.error}">
+			<h5 class="messageError" >Erro ao realizar Login</h5>
+		</div>
+
+		<label class="sr-only">Email</label> <input type="text"
+			name="username" placeholder="Digite seu email" class="form-control" />
+
+		<label class="sr-only">Senha</label> <input type="password"
+			name="password" placeholder="Senha" class="form-control" />
+
+		<button type="submit" class="btn btn-lg btn-primary btn-block">Entrar</button>
+		<a href="/cadastrarUsuario">Cadastrar</a>
+
+		<p class="mt-5 mb-3 text-muted">© 2017-2018</p>
+
+		<input type="hidden" th:name="${_csrf.parameterName}"
+			th:value="${_csrf.token}" />
+
+	</form>
+
+	<script th:src="@{js/jquery-3.3.1.min.js}" type="text/javascript"></script>
+	<script th:src="@{js/bootstrap.min.js}" type="text/javascript"></script>
+	<script th:src="@{js/bootstrap.bundle.min.js}" type="text/javascript"></script>
 </body>
 </html>

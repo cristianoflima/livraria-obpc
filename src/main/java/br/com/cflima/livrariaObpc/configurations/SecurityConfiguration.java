@@ -20,7 +20,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http
 			.authorizeRequests()
 				.antMatchers("/cadastrarUsuario").permitAll()
-				.antMatchers("/").hasAnyAuthority("RL_ADM","RL_USR")
+				.antMatchers("/salvar").permitAll()
+				.antMatchers("/").hasAnyAuthority("RL_USR")
 				.anyRequest()
 				.authenticated()
 			.and()
@@ -41,6 +42,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
+	
+//	public static void main(String[] args) {
+//		System.out.println(new BCryptPasswordEncoder().encode("123456"));
+//	}
 	
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder builder, 

@@ -19,6 +19,14 @@ body {
 	background-repeat: no-repeat; */
 }
 
+.messageError{
+	color: red;
+}
+
+.messageSuccess{
+	color: blue;
+}
+
 .imgLogo{
 	margin-bottom: 20px;
 }

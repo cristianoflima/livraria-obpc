@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8" />
+<link th:href="@{css/main.css}" rel="stylesheet" />
 <link th:href="@{css/cadUsuario.css}" rel="stylesheet" />
 <link th:href="@{css/bootstrap-reboot.min.css}" rel="stylesheet" />
 <link th:href="@{css/bootstrap-grid.min.css}" rel="stylesheet" />
@@ -11,44 +12,43 @@
 </head>
 <body class="bg-light">
 	<div class="tituloPrincipal">
-		<img id="logo" th:src="@{css/img/logoCadastro.jpeg}" width="50px" height="50px"/>
+		<img id="logo" th:src="@{images/logoCadastro.jpeg}" width="50px"
+			height="50px" />
 		<h1>Cadastro de Usuário</h1>
 	</div>
 	<div class="container">
 		<div class="center-form">
-			<form class="needs-validation">
+			<form class="needs-validation" th:action="@{/salvar}"
+				th:object="${user}" method="post">
 
-				<div class="blocosCadastrais">
+				<div class="blocosCadastrais" th:if="${sucessoParcial == null}">
 					<h3>Dados do usuário</h3>
-
 					<div class="form-group">
 						<div class="row">
 							<div class="col col-sm-6">
 								<label for="email">Email</label> <input type="email"
 									class="form-control" id="email" name="email"
-									placeholder="email@exemplo.com.br" />
+									th:field="*{email}" placeholder="email@exemplo.com.br" />
 							</div>
 							<div class="col col-sm-6">
 								<label for="emailConfirmation">Cofirmação de email</label> <input
 									type="email" class="form-control" id="emailConfirmation"
-									name="emailConfirmation" placeholder="Repetir email" />
+									th:field="*{confirmEmail}" placeholder="Repetir email" />
 							</div>
 						</div>
-
 					</div>
-
-
 					<div class="form-group">
 						<div class="row">
 							<div class="col col-sm-6">
 								<label for="password">Senha</label> <input type="password"
-									class="form-control" id="password" name="password"
-									placeholder="Mínimo 6 dígitos" />
+									class="form-control" id="password" th:field="*{password}"
+									min="6" maxlength="8" placeholder="De 6 a 8 dígitos" />
 							</div>
 							<div class="col col-sm-6">
 								<label for="passwordConfirmation">Cofirmação de senha</label> <input
 									type="password" class="form-control" id="passwordConfirmation"
-									name="passwordConfirmation" placeholder="Repita senha" />
+									min="6" maxlength="8" th:field="*{confirmPassword}"
+									placeholder="Repita senha" />
 							</div>
 						</div>
 					</div>
@@ -59,12 +59,14 @@
 					<div class="form-group">
 						<div class="row">
 							<div class="col col-sm-8">
-								<input type="text" class="form-control" id="name" name="name"
+								<input type="text" class="form-control" id="name"
+									th:field="*{person.name}" maxlength="45"
 									placeholder="Nome completo" />
 							</div>
 							<div class="col col-sm-4">
-								<input type="text" class="form-control" id="telefone"
-									name="telefone" placeholder="Telefone com DDD" />
+								<input type="text" class="form-control" id="phone"
+									th:field="*{person.phone}" maxlength="14"
+									placeholder="Telefone com DDD e sem o zero" />
 							</div>
 						</div>
 					</div>
@@ -73,50 +75,54 @@
 					<div class="form-group">
 						<div class="row">
 							<div class="col col-sm-8">
-								<input type="text" class="form-control" id="logradouro"
-									name="logradouro" placeholder="Rua/Av/Travessa " />
+								<input type="text" class="form-control" id="street"
+									th:field="*{person.street}" maxlength="50"
+									placeholder="Rua/Av/Travessa " />
 							</div>
 							<div class="col col-sm-2">
 								<input type="number" class="form-control" id="number"
-									name="number" placeholder="nº" />
+									th:field="*{person.number}" placeholder="nº" />
 							</div>
 							<div class="col col-sm-2">
-								<input type="text" class="form-control" id="complemento"
-									name="complemento" placeholder="Compl." />
+								<input type="text" class="form-control" id="complement"
+									th:field="*{person.complement}" maxlength="45" placeholder="Compl." />
 							</div>
 						</div>
 					</div>
-
-
 					<div class="form-group">
 						<div class="row">
 							<div class="col col-sm-4">
-								<input type="text" class="form-control" id="bairro"
-									name="bairro" placeholder="Bairro" />
+								<input type="text" class="form-control" id="neighborhood"
+									th:field="*{person.neighborhood}" maxlength="50" placeholder="Bairro" />
 							</div>
 							<div class="col col-sm-4">
-								<input type="text" class="form-control" id="cep" name="cep"
-									placeholder="CEP" />
+								<input type="text" class="form-control" id="cep"
+									th:field="*{person.cep}" maxlength="8" placeholder="CEP" />
 							</div>
-							<div class="col col-sm-4">
-								<input type="number" class="form-control" id="cidade"
-									name="cidade" placeholder="Cidade - UF" />
+							<div class="col col-sm-2">
+								<input type="text" class="form-control" id="city"
+									th:field="*{person.city}" maxlength="20" placeholder="Cidade" />
+							</div>
+
+							<div class="col col-sm-2">
+								<input type="text" class="form-control upCase" id="uf"
+									th:field="*{person.uf}" maxlength="2" placeholder="UF" />
 							</div>
 						</div>
 					</div>
-
 				</div>
+
+				<div>
+					<button class="btn btn-lg btn-primary btn-block" type="submit">Cadastrar</button>
+					<button class="btn btn-lg btn-danger btn-block"
+						onclick="history.back()" type="button">Cancelar</button>
+					<input type="hidden" th:name="${_csrf.parameterName}"
+						th:value="${_csrf.token}" />
+				</div>
+
 			</form>
 		</div>
 	</div>
-
-
-
-
-
-
-	<!-- 		<button onclick="history.back()">Voltar</button> -->
-
 
 
 	<script th:src="@{js/jquery-3.3.1.min.js}" type="text/javascript"></script>
